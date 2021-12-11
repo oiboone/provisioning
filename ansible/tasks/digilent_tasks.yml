@@ -1,0 +1,29 @@
+# Digilent Waveforms is used to control their electronics explorer board. It requires a runtime for communicating wiht the board as well as the main software. This set of tasks also installs command line utilities for the runtime.<https://reference.digilentinc.com/reference/software/waveforms/waveforms-3/start>
+# The deb files were downloaded in advance becasue download requires filling out a form. Instructions for installation were found here <https://blog.thexyzlab.studio/installing-waveforms-on-linux/>
+
+- name: Check if waveforms is installed
+  command: dpkg-query -W digilent.waveforms
+  register: waveforms_check_deb
+  failed_when: waveforms_check_deb.rc > 1
+  changed_when: waveforms_check_deb.rc == 1
+
+- name: Copy Digilent deb files
+  copy:
+    src: digilent-waveform/
+    dest: "/home/{{username}}/distributions/"
+    owner: "{{username}}"
+    group: "{{usergroup}}"
+    force: no
+  when: waveforms_check_deb.rc == 1
+
+- name: Install adept runtime
+  apt: deb="/home/{{username}}/distributions/digilent.adept.runtime_2.21.3-amd64.deb"
+  when: waveforms_check_deb.rc == 1
+
+- name: Install adept utilities
+  apt: deb="/home/{{username}}/distributions/digilent.adept.utilities_2.4.1-amd64.deb"
+  when: waveforms_check_deb.rc == 1
+
+- name: Install waveforms
+  apt: deb="/home/{{username}}/distributions/digilent.waveforms_3.16.3_amd64.deb"
+  when: waveforms_check_deb.rc == 1

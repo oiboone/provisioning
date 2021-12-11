@@ -1,0 +1,13 @@
+# ansible-playbook main.yml
+#
+# Requirements.yml downloads roles from ansible galaxy. It may need to be in a separate playbook.
+# include-playbook: requirements.yml
+# local.yml installs packages available in ubuntu repositories
+include-playbook: local.yml
+# config.yml copies configuration files for putty and remmini
+include-playbook: config.yml
+# playbooks that install packages from ppa's
+include-playbook: vscode.yml
+include-playbook: veracrypt.yml
+include-playbook: zotero.yml
+#include-playbook:

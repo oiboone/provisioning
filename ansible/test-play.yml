@@ -1,0 +1,23 @@
+---
+ # playbook for testing syntax
+- hosts: active
+  become: true
+  gather_facts: no
+  tasks:
+  - name: Prints test message
+    ansible.builtin.debug:
+      msg:
+      - "Provisioning host: {{inventory_hostname}}"
+      - "ssh pass is {{ansible_ssh_pass}}"
+      - "sudo pass is {{ansible_sudo_pass}}"
+
+  - name: test ssh connection
+    command: ls
+    register: myoutput
+
+  - name: Prints ls output
+    ansible.builtin.debug:
+      msg:
+      - "Phome contents: {{myoutput}}"
+
+

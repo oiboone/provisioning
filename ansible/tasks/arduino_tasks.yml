@@ -1,0 +1,85 @@
+#   todo: TeensyduoInstall must be run by hand? Issuing same command manually works???
+#
+#   based on instructions from <https://www.pjrc.com/teensy/td_download.html>
+# and the role found here: <https://github.com/conorsch/ansible-role-arduino>
+#
+# Command Line Install
+# The Teensyduino installer supports a non-graphical command line install, using "--dir=<directory>" to specify Arduino's location.
+
+# For example, the following commands can be used to install Arduino and Teensyduino on a Linux 64 bit x86 system, and compile using the sample makefile for Teensy 4.0.
+
+# wget https://downloads.arduino.cc/arduino-1.8.13-linux64.tar.xz
+# wget https://www.pjrc.com/teensy/td_153/TeensyduinoInstall.linux64
+# wget https://www.pjrc.com/teensy/00-teensy.rules
+# sudo cp 00-teensy.rules /etc/udev/rules.d/
+# tar -xf arduino-1.8.13-linux64.tar.xz
+# chmod 755 TeensyduinoInstall.linux64
+# ./TeensyduinoInstall.linux64 --dir=arduino-1.8.13
+# cd arduino-1.8.13/hardware/teensy/avr/cores/teensy4
+# make
+
+# Version of Arduino IDE to install, will be interpolated in download URLs.
+- name: Set arduino version number
+  set_fact:
+    arduino_version: "1.8.13"
+
+# wget https://downloads.arduino.cc/arduino-1.8.13-linux64.tar.xz
+- name: Download Arduino software
+  get_url:
+    url: "https://downloads.arduino.cc/arduino-{{arduino_version}}-linux64.tar.xz"
+    dest: "{{dist_dir}}/arduino-{{arduino_version}}-linux64.tar.xz"
+#    mode: '0777'
+
+# wget https://www.pjrc.com/teensy/td_153/TeensyduinoInstall.linux64
+# chmod 755 TeensyduinoInstall.linux64
+- name: Download Teensyduino software
+  get_url:
+    url: https://www.pjrc.com/teensy/td_153/TeensyduinoInstall.linux64
+    dest: "{{dist_dir}}/TeensyduinoInstall.linux64"
+    mode: '0755'
+
+
+# wget https://www.pjrc.com/teensy/00-teensy.rules
+- name: Download Teensyduino udev rules
+  get_url:
+    url: https://www.pjrc.com/teensy/00-teensy.rules
+    dest: "{{dist_dir}}/00-teensy.rules"
+#    mode: '0777'
+
+# sudo cp 00-teensy.rules /etc/udev/rules.d/
+- name: Copy teensy udev rules
+  copy:
+    src: "{{dist_dir}}/00-teensy.rules"
+    dest: "/etc/udev/rules.d/"
+    owner: "root"
+    group: "root"
+    remote_src: yes
+
+# tar -xf arduino-1.8.13-linux64.tar.xz
+- name: Extract Arduino archive.
+  become: yes
+  unarchive:
+    src: "{{dist_dir}}/arduino-{{arduino_version}}-linux64.tar.xz"
+    dest: "{{dist_dir}}/"
+    remote_src: yes
+    creates: "{{dist_dir}}/arduino-{{arduino_version}}"
+
+- name: Install Arduino IDE to menu
+  command: "{{dist_dir}}/arduino/install.sh"
+  # Cheating a bit and chaining the install.sh logic with directory extraction,
+  # to maintain idempotence.
+  become: yes
+  args:
+    creates: "{{dist_dir}}/arduino-{{ arduino_version }}"
+
+# ./TeensyduinoInstall.linux64 --dir=arduino-1.8.13
+- name: Install Teensyduino installer
+  shell: "./TeensyduinoInstall.linux64 –-dir=arduino-{{ arduino_version }} > output.jaj 2>&1"
+  become: yes
+  args:
+    chdir: "{{dist_dir}}"
+
+  # command: "./TeensyduinoInstall.linux64 –-dir=arduino-{{ arduino_version }} > output.jaj 2>&1"
+  # become: yes
+  # args:
+  #   chdir: "{{dist_dir}}"

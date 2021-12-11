@@ -1,0 +1,17 @@
+#  Use APT to install zotero from their ppa
+# 
+- name: Add apt key for rotorque 
+  apt_key:
+    url: https://github.com/retorquere/zotero-deb/releases/download/apt-get/deb.gpg.key
+
+# 
+- name: add zotero repository
+  apt_repository:
+    repo: deb https://github.com/retorquere/zotero-deb/releases/download/apt-get/ ./ 
+    state: present
+
+- name: install zotero using apt  
+  apt:
+    name: zotero
+    update_cache: yes
+    state: present

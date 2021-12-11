@@ -1,0 +1,7 @@
+---
+roles:
+  # Install roles from Ansible Galaxy.
+  - name: gantsign.visual-studio-code
+    version: 6.6.0
+  # - name: gantsign-visual-studio-code-extensions
+  #   version: 2.2.0

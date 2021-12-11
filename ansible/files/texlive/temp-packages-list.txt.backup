@@ -1,0 +1,11 @@
+Add list of desired packages here along wiht reasons for including them:
+
+# Needed to compile Latex tutorials:
+siunitx
+booktabs
+letltxmacro
+
+# Instructions
+Include desired packages in packages.txt to include automatically in ansible installation. For one time installation, run tlmgr via:
+
+sudo -i tlmgr install <package name> ..... in order to get correct path and root rights

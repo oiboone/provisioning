@@ -1,0 +1,18 @@
+# execute via : sudo ansible-playbook engineering.yml
+- hosts: active
+  gather_facts: no
+  become: true
+
+  tasks:
+  - name: Install deb packages from standard repositories
+    apt: 
+      name:
+        # Engineering Software
+        - kicad
+        - freecad
+
+  # - name: Install arduino software for Teensy 4.0 Board
+  #   include_tasks: tasks/arduino_tasks.yml
+
+  - name: Install Digilent Waveform software
+    include_tasks: tasks/digilent_tasks.yml

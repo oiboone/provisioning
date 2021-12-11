@@ -1,0 +1,36 @@
+# execute via : ansible-playbook technical-writing.yml
+- hosts: active
+  gather_facts: yes
+  become: true
+  tasks:
+  # find a way to make this idempotent
+  - name: Install TeX Live
+    include_tasks: tasks/latex_tasks.yml
+
+  - name: Install pandoc related deb packages from standard repositories
+    apt: 
+      name:
+        - pandoc
+        - pandoc-citeproc
+        - pandoc-sidenote
+        - plantuml  # Text based diagrams for markdown
+        - graphviz  # text based directed and undirected graphs
+        - texstudio
+
+  roles:
+    # Install vscode and extensions
+    - role: gantsign.visual-studio-code
+      users:
+        - username: "{{username}}"
+          visual_studio_code_extensions:
+            - shd101wyy.markdown-preview-enhanced
+            - notZaki.pandocciter
+            - DougFinke.vscode-pandoc
+          visual_studio_code_settings_overwrite: yes
+          visual_studio_code_settings: {
+            "editor.rulers": [80, 100, 120],
+            "editor.renderWhitespace": true,
+            "files.associations": {
+              "Vagrantfile": "ruby"
+            }
+          }

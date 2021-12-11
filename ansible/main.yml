@@ -1,0 +1,5 @@
+- import_playbook: standard-desktop.yml
+- import_playbook: multimedia.yml
+- import_playbook: engineering.yml
+- import_playbook: development.yml
+- import_playbook: technical-writing.yml

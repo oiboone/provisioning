@@ -1,0 +1,75 @@
+# execute via : ansible-playbook desktop.yml
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+  - name: Install deb packages from standard repositories
+    apt: 
+      name:
+        # AV software - removed for now - shouldn't be needed for a desktop.
+        #- clamav
+        #- clamtk
+        # Office apps
+        - libreoffice
+        - okular # document viewer for pdf, djvu, etc
+        - skanlite # scanner software
+???        - xsane # alternative scanner software
+        - pdfarranger # split and merge
+        - firefox
+???        - thunderbird
+        - chromium-browser
+        - vlc
+        - owncloud-client
+???        - elisa # music player
+        # Virtualization
+        - virtualbox
+        - vagrant
+???        - dosbox
+        # Remote access to UST
+        - putty
+        - remmina
+        # Graphics
+        - inkscape
+        - gimp
+        - imagemagick
+        - imagej
+        # Multimedia
+        - openshot
+???        - kdenlive
+        - blender
+        - handbrake
+        - audacity
+        # Engineering Software
+        - kicad
+        - freecad
+???     - arduino # look at instructions for installing with support for new chips
+???     - digilent EE explorer # look it up
+        # document preparation
+        # - texlive # full??? from nonstandard repo?
+        # - texstudio
+        - pandoc
+        - pandoc-citeproc
+        - pandoc-sidenote
+        - plantuml
+???     - graphviz
+  # some packages are not available via apt so we'll install via snap 
+  - name: Install snap packages
+    snap:
+      name: 
+        - makemkv
+
+  - name: Copy putty config files
+    copy:
+      src: putty/
+      dest: /home/{{username}}/.putty/
+      owner: {{username}}
+      group: {{usergroup}}
+      force: no
+  
+  - name: Copy remmina config files
+    copy:
+      src: remmina/
+      dest: /home/{{username}}/.remmina/
+      owner: {{username}}
+      group: {{usergroup}}
+      force: no

@@ -1,0 +1,77 @@
+ # ansible-playbook local.yml
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+  - name: Install deb packages
+    apt: 
+      name:
+        # Basic GUI stuff - fix this section
+        # - desktop-file-utils
+        # - lxqt-themes
+        # - lxqt-theme-debian
+        # - lxqt-system-theme
+        # - lxqt-config
+        # - lxqt-notificationd
+        # - lxqt-globalkeys
+        # - lxqt-panel
+        # - lxqt-policykit
+        # - lxqt-qtplugin
+        # - lxqt-runner
+        # - lxqt-session
+        # - pcmanfm-qt
+        # - qterminal
+        # # recommended
+        # - lubuntu-artwork
+        # - lxqt-branding-debian
+        # - lxqt-about
+        # - xorg # x window server
+        # - sddm # display manager - provides graphical login
+        # - kde-plasma-desktop # basic kde desktop
+        # sudo systemctl set-default graphical.target
+        # AV software
+        - clamav
+        - clamtk
+        # Office apps
+        - libreoffice
+        - okular
+        - skanlite # scanner software
+        - pdfarranger # split and merge
+        - firefox
+        - thunderbird
+        - chromium-browser
+        - vlc
+        - owncloud-client
+        - elisa # music player
+        # Virtualization
+        - virtualbox
+        - vagrant
+        # Remote access to UST
+        - putty
+        - remmina
+        # Graphics
+        - inkscape
+        - gimp
+        - imagemagick
+        - imagej
+        # Multimedia
+        - openshot
+        - kdenlive
+        - blender
+        - handbrake
+        - audacity
+        # Engineering Software
+        - kicad
+        - freecad
+        # document preparation
+        # - texlive
+        # - texstudio
+        - pandoc
+        - pandoc-citeproc
+        - pandoc-sidenote
+        - plantuml
+  # some packages are not available via apt  
+  - name: Install snap packages
+    snap:
+      name: 
+        - makemkv

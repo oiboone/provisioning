@@ -1,0 +1,60 @@
+# Installs the most recent version of TeXLive based on instructions here: <https://www.tug.org/texlive/acquire-netinstall.html>
+# This configuration installs a fairly minimal set of packages and then uses tlmgr <https://www.tug.org/texlive/doc/tlmgr.html#EXAMPLES> to download additional packages.
+
+# This approach of creating a directory and stripping the top level of the tarball avoids keeping track of version numbers
+# Version of TeX Live to install
+- name: Set arduino version number
+  set_fact:
+    texlive_version: "2021"
+
+- name: Set Tex Live directory
+  set_fact:
+    texlive_bindir: "/usr/local/texlive/{{texlive_version}}/bin/x86_64-linux"
+
+- name: Creates directory
+  file:
+    path: "{{dist_dir}}/tex-live"
+    state: directory
+    owner: root
+    group: root
+    mode: 0777
+
+- name: Copy TeX Live config file and package list
+  copy:
+    src: texlive/
+    dest: "{{dist_dir}}/tex-live/"
+
+- name: Move download manager to distributions directory
+  command: "mv {{dist_dir}}/tex-live/install-tl-unx.tar.gz {{dist_dir}}/tex-live.tar.gz"
+
+# - name: Download TeX Live
+#   get_url:
+#     url: "http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
+#     dest: "{{dist_dir}}/tex-live.tar.gz"
+#     mode: '0777'
+
+- name: Unarchive TeX Live Installer
+  ansible.builtin.unarchive:
+    src: "{{dist_dir}}/tex-live.tar.gz"
+    dest: "{{dist_dir}}/tex-live"
+    extra_opts: [--strip-components=1]
+    remote_src: yes 
+
+- name: Run TeXLive installer
+  command: env perl install-tl --profile=texlive-profile
+  args:
+    chdir: "{{dist_dir}}/tex-live/"
+
+- name: Add TeX Live to system-wide $PATH.
+# order is important since there is an older version of tlmgr in /usr/bin
+  copy:
+    dest: /etc/profile.d/texlive.sh # Note: this approach is not idempotent
+    content: "{{texlive_bindir}}:$PATH"
+    mode: '0644'
+
+# Note : packages go in /usr/local/texlive/2021/texmf-dist/tex/latex
+# If a package is needed add to list in files/texlive/packages.txt
+# document reason for 
+- name: Use tlmgr to install additional packages
+  command: egrep -v "#|$^" {{dist_dir}}/tex-live/packages.txt | xargs {{texlive_bindir}}/tlmgr install
+  become: yes

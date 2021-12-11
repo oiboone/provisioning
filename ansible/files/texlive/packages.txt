@@ -1,0 +1,29 @@
+# Add list of desired packages here along with reasons for including them.
+# Comment lines must sart with #, blank lines ok.
+
+# Use sudo -i tlmgr install <package name>
+# for manual installs in order to get correct path and root rights
+
+# Packages needed to compile Latex tutorials:
+# tut 2 packages
+siunitx
+booktabs
+letltxmacro
+lastpage
+
+# tut 3 graphics
+wrapfig
+floatflt
+picinpar
+
+# tut 4 references
+nomencl
+xkeyval
+koma-script
+# koma-script includes tocbasic
+glossaries
+mfirstuc
+etoolbox
+textcase
+xfor
+datatool

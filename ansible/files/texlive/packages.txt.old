@@ -1,0 +1,16 @@
+siunitx
+booktabs
+letltxmacro
+lastpage
+wrapfig
+floatflt
+picinpar
+nomencl
+xkeyval
+koma-script
+glossaries
+mfirstuc
+etoolbox
+textcase
+xfor
+datatool

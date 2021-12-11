@@ -1,0 +1,19 @@
+# download veracrypt from a ppa and install via apt 
+
+# this task works
+- name: Add apt key for unit193 by id from a keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 3BFB8E06536B8753AC58A4A303647209B58A653A
+
+# this task works
+- name: add veracrypt repository
+  apt_repository:
+    repo: deb http://ppa.launchpad.net/unit193/encryption/ubuntu focal main 
+    state: present
+
+- name: install veracrypt using apt  
+  apt:
+    name: veracrypt
+    update_cache: yes
+    state: present

@@ -1,0 +1,12 @@
+# execute via : sudo ansible-playbook development.yml
+- hosts: active
+  gather_facts: no
+  become: true
+
+  tasks:
+  - name: Install deb packages from standard repositories
+    apt: 
+      name:
+        - git
+        - ansible
+        - sshpass

@@ -1,0 +1,130 @@
+i ae: Virtual fonts for T1 encoded CMR-fonts
+i amscls: AMS document classes for LaTeX
+i amsfonts: TeX fonts from the American Mathematical Society
+i amsmath: AMS mathematical facilities for LaTeX
+i atbegshi: Execute stuff at \shipout time
+i atveryend: Hooks at the very end of a document
+i auxhook: Hooks for auxiliary files
+i babel: Multilingual support for Plain TeX or LaTeX
+i babel-english: Babel support for English
+i babelbib: Multilingual bibliographies
+i bibtex: Process bibliographies for LaTeX, etc
+i bibtex.x86_64-linux: x86_64-linux files of bibtex
+i bigintcalc: Integer calculations on very large numbers
+i bitset: Handle bit-vector datatype
+i bookmark: A new bookmark (outline) organization for hyperref
+i carlisle: David Carlisle's small packages
+i cm: Computer Modern fonts
+i collection-basic: Essential programs and files
+i collection-latex: LaTeX fundamental packages
+i colorprofiles: Collection of free ICC profiles
+i colortbl: Add colour to LaTeX tables
+i dehyph: German hyphenation patterns for traditional orthography
+i dvipdfmx: An extended version of dvipdfm
+i dvipdfmx.x86_64-linux: x86_64-linux files of dvipdfmx
+i dvips: A DVI to PostScript driver
+i dvips.x86_64-linux: x86_64-linux files of dvips
+i ec: Computer modern fonts in T1 and TS1 encodings
+i enctex: A TeX extension that translates input on its way into TeX
+i epstopdf-pkg: Call epstopdf "on the fly"
+i etex: An extended version of TeX, from the NTS project
+i etex-pkg: E-TeX support package
+i etexcmds: Avoid name clashes with e-TeX commands
+i everyshi: Take action at every \shipout
+i fancyhdr: Extensive control of page headers and footers in LaTeX2e
+i firstaid: First aid for external LaTeX files and packages that need updating
+i fix2col: Fix miscellaneous two column mode features
+i geometry: Flexible and complete interface to document dimensions
+i gettitlestring: Clean up title references
+i glyphlist: Adobe Glyph List and TeX extensions
+i graphics: The LaTeX standard graphics bundle
+i graphics-cfg: Sample configuration files for LaTeX color and graphics
+i graphics-def: Colour and graphics option files
+i grfext: Manipulate the graphics package's list of extensions
+i grffile: Extended file name support for graphics (legacy package)
+i hopatch: Load patches for packages
+i hycolor: Implements colour for packages hyperref and bookmark
+i hyperref: Extensive support for hypertext in LaTeX
+i hyph-utf8: Hyphenation patterns expressed in UTF-8
+i hyphen-base: core hyphenation support files
+i hyphenex: US English hyphenation exceptions file
+i ifplatform: Conditionals to test which platform is being used
+i iftex: Am I running under pdfTeX, XeTeX or LuaTeX?
+i infwarerr: Complete set of information/warning/error message macros
+i intcalc: Expandable arithmetic operations with integers
+i knuth-lib: Core TeX and Metafont sources from Knuth
+i knuth-local: Knuth's local information
+i kpathsea: Path searching library for TeX-related files
+i kpathsea.x86_64-linux: x86_64-linux files of kpathsea
+i kvdefinekeys: Define keys for use in the kvsetkeys package
+i kvoptions: Key value format for package options
+i kvsetkeys: Key value parser with default handler support
+i l3backend: LaTeX3 backend drivers
+i l3kernel: LaTeX3 programming conventions
+i l3packages: High-level LaTeX3 concepts
+i latex: A TeX macro package that defines LaTeX
+i latex-bin: LaTeX executables and man pages
+i latex-bin.x86_64-linux: x86_64-linux files of latex-bin
+i latex-fonts: A collection of fonts used in LaTeX distributions
+i latexconfig: configuration files for LaTeX-related formats
+i letltxmacro: Let assignment for LaTeX macros
+i lm: Latin modern fonts in outline formats
+i ltxcmds: Some LaTeX kernel commands for general use
+i ltxmisc: Miscellaneous LaTeX packages, etc
+i lua-alt-getopt: Process application arguments the same way as getopt_long
+i luahbtex: LuaTeX with HarfBuzz library for glyph shaping
+i luahbtex.x86_64-linux: x86_64-linux files of luahbtex
+i lualibs: Additional Lua functions for LuaTeX macro programmers
+i luaotfload: OpenType 'loader' for Plain TeX and LaTeX
+i luaotfload.x86_64-linux: x86_64-linux files of luaotfload
+i luatex: The LuaTeX engine
+i luatex.x86_64-linux: x86_64-linux files of luatex
+i makeindex: Makeindex development sources
+i makeindex.x86_64-linux: x86_64-linux files of makeindex
+i metafont: A system for specifying fonts
+i metafont.x86_64-linux: x86_64-linux files of metafont
+i mflogo: LaTeX support for Metafont logo fonts
+i mfnfss: Packages to typeset oldgerman and pandora fonts in LaTeX
+i mfware: Supporting tools for use with Metafont
+i mfware.x86_64-linux: x86_64-linux files of mfware
+i modes: A collection of Metafont mode_def's
+i mptopdf: mpost to PDF, native MetaPost graphics inclusion
+i mptopdf.x86_64-linux: x86_64-linux files of mptopdf
+i natbib: Flexible bibliography support
+i oberdiek: A bundle of packages submitted by Heiko Oberdiek
+i pagesel: Select pages of a document for output
+i pdfescape: Implements pdfTeX's escape features using TeX or e-TeX
+i pdftex: A TeX extension for direct creation of PDF
+i pdftex.x86_64-linux: x86_64-linux files of pdftex
+i pdftexcmds: LuaTeX support for pdfTeX utility functions
+i plain: The Plain TeX format
+i pslatex: Use PostScript fonts by default
+i psnfss: Font support for common PostScript fonts
+i pspicture: PostScript picture support
+i refcount: Counter operations with label references
+i rerunfilecheck: Checksum based rerun checks on auxiliary files
+i scheme-basic: basic scheme (plain and latex)
+i scheme-infraonly: infrastructure-only scheme (no TeX at all)
+i scheme-minimal: minimal scheme (plain only)
+i stringenc: Converting a string between different encodings
+i symbol: URW "Base 35" font pack for LaTeX
+i tex: A sophisticated typesetting engine
+i tex-ini-files: Model TeX format creation files
+i tex.x86_64-linux: x86_64-linux files of tex
+i texlive-common: TeX Live documentation (common elements)
+i texlive-docindex: top-level TeX Live doc.html, etc.
+i texlive-en: TeX Live manual (English)
+i texlive-msg-translations: translations of the TeX Live installer and TeX Live Manager
+i texlive-scripts: TeX Live infrastructure programs
+i texlive-scripts.x86_64-linux: x86_64-linux files of texlive-scripts
+i texlive.infra: basic TeX Live infrastructure
+i texlive.infra.x86_64-linux: x86_64-linux files of texlive.infra
+i tlshell: GUI frontend (tcl/tk-based) for tlmgr
+i tlshell.x86_64-linux: x86_64-linux files of tlshell
+i tools: The LaTeX standard tools bundle
+i unicode-data: Unicode data and loaders for TeX
+i uniquecounter: Provides unlimited unique counter
+i url: Verbatim with URL-sensitive line breaks
+i xdvi: A DVI previewer for the X Window System
+i xdvi.x86_64-linux: x86_64-linux files of xdvi
+i zapfding: URW "Base 35" font pack for LaTeX

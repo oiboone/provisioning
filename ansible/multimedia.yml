@@ -1,0 +1,31 @@
+---
+ # sudo ansible-playbook multimedia.yml
+- hosts: active
+  become: true
+  gather_facts: no
+  tasks:
+  - name: Install apps from standard repositories
+    apt: 
+      name:
+        # this is for ripping cd's and authoring cds/dvds
+        # since freedb is down, this seems to work while others don't
+        - k3b 
+        # video editing programs.
+        # Openshot is simpler to use
+        # but kdenlive supports more formats
+        - openshot
+        - kdenlive
+        # I haven't used blender standalone yet, but it's for animations
+        # Actually, it's used by openshot for animated titles
+        - blender
+        # Used for burning/ripping dvds
+        - handbrake
+        # Haven't used audacity for much audio editing yet, just moving from one format to another, adjusting tempo, and removing noise.
+        - audacity
+  # some packages are not available via apt  
+  - name: Install snap packages
+    snap:
+      name: 
+        # Used for ripping dvd's into mkv files.
+        - makemkv
+...

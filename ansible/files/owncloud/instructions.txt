@@ -1,0 +1,2 @@
+put config file in ~/.config/ownCloud/
+

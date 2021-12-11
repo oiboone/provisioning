@@ -1,0 +1,26 @@
+
+supakornras.asymptote
+
+
+# basic extensions
+
+# website desing
+adam-watters.vscode-color-pick
+maxird.jinja-fold
+samuelcolvin.jinjahtml # highlighting for jinja in templates for html, yaml, etc.
+
+# Color themes
+ginfuru.ginfuru-better-solarized-dark-theme
+arcticicestudio.nord-visual-studio-code
+
+# pandoc related
+
+bmpenuelas.waveform-render
+DougFinke.vscode-pandoc
+jebbs.plantuml
+shd101wyy.markdown-preview-enhanced
+yzhang.markdown-all-in-one
+notZaki.pandocciter
+
+hediet.vscode-drawio # uses drawio inside vscode to create svg files.
+nopeslide.vscode-drawio-plugin-wavedrom  # adds wavedrom bitfields and timing diagrams to drawio

@@ -1,0 +1,19 @@
+# from <https://vscodium.com/>
+
+#  Use APT to install vscodium from its ppa
+# 
+- name: Add gpg key for repo 
+  apt_key:
+    url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
+
+# 
+- name: add vscodium repository
+  apt_repository:
+    repo: deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main
+    state: present
+
+- name: install vscodium using apt  
+  apt:
+    name: codium
+    update_cache: yes
+    state: present

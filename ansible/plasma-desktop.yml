@@ -1,0 +1,90 @@
+# execute via : sudo ansible-playbook standard-desktop.yml
+- hosts: active
+  become: true
+  tasks:
+  - name: Install base KDE Plasma and display manager
+    apt:
+      name:
+         - kubuntu-desktop
+         - sddm
+         - plasma-nm # network connections settings plugin - is this really needed
+ 
+      install_recommends: no
+      state: latest
+      update_cache: yes
+      cache_valid_time: 100000
+  - name: Install deb packages from standard repositories
+    apt: 
+      name:
+        ##      Security Software     ##
+
+        # AV software - removed for now - shouldn't be needed for a desktop.
+        #- clamav
+        #- clamtk
+        
+        # Encryption for cloud services
+        - gocryptfs
+
+        ##      General Desktop Software      ##
+
+        # Basic system management apps
+        - konsole
+        - muon
+        - partitionmanager
+        - plasma-pa
+        - dolphin
+     
+        # Office apps
+        - libreoffice # Microsoft Office alternative
+        - okular # document viewer for pdf, djvu, etc
+        # Enable one or both of the following programs if the system has a scanner
+        #- skanlite # scanner software
+        #- xsane # alternative scanner software
+        - pdfarranger # split and merge
+        - firefox
+        # - thunderbird # using webmail for now
+        # - chromium-browser # using firefox only for now
+        - vlc # media player
+        # enable one of the following for a music player
+        - clementine        
+        # elisa # music player 
+        
+        # Virtualization Software
+        - virtualbox
+        - vagrant
+        - dosbox
+        
+        # Remote access apps
+        # - owncloud-client # Link to ida at work
+        - putty   # ssh, telnet, and tunnelling
+        - remmina # remote desktop client
+        - openssh-server # Allow remote command line access to this machine
+        # add a remote desktop server?
+        
+        # Graphics Software
+        - inkscape
+        - gimp
+        - imagemagick
+        - imagej
+        
+  - name: Install zotero
+    include_tasks: tasks/zotero_tasks.yml
+
+  - name: Install veracrypt
+    include_tasks: tasks/veracrypt_tasks.yml
+
+  - name: Copy putty config files
+    copy:
+      src: putty/
+      dest: /home/{{username}}/.putty/
+      owner: "{{username}}"
+      group: "{{usergroup}}"
+      force: no
+
+  - name: Copy remmina config files
+    copy:
+      src: remmina/
+      dest: /home/{{username}}/.remmina/
+      owner: "{{username}}"
+      group: "{{usergroup}}"
+      force: no

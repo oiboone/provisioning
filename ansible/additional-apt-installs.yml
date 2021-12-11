@@ -1,0 +1,12 @@
+# execute via : sudo ansible-playbook additional-apt-installs.yml
+- hosts: active
+  become: true
+  tasks:
+  - name: Install deb packages from standard repositories
+    apt: 
+      name:
+        # encryption for cloud storage
+        - gocryptfs
+        # preferred graphical package manager???
+        - muon
+        sudo apt install libdvd-pkg ???

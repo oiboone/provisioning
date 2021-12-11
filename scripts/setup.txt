@@ -1,0 +1,11 @@
+# connect to network
+ubuntu-drivers devices # list drivers for video card one is recommended
+sudo apt install nvidia-driver-460 # recommende driver for NVidia Quadro P400
+
+# see grub menu
+sudo su
+nano grub
+480 440 4 440 4 440 4 349 3 523 1 440 4 349 3 523 1 440 8 659 4 659 4 659 4 698 3 523 1 415 4 349 3 523 1 440 8
+#comment out GRUB_TIMEOUT=0 line
+# save and exit
+sudo update-grub
