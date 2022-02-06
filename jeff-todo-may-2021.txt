@@ -1,4 +1,4 @@
-select scanner software - skanlite?
+select scanner software - skanlite - yes
 try digital audio workbench software
 make sure ~/distributions exists before executing engineering.yml
 teensyduino installer still doesn't run without gui
@@ -10,7 +10,6 @@ Can mozilla account be added without user input?
 settings to speed up boot process? (use systemd-analyze)
 install brave browser https://brave.com/linux/ ?
 kwalletmanager???
-Check in project to git soon!!!!!
 in latex tutorial 4 why isn't nomenclature working properly?
 	makeindex $1.nlo -s nomencl.ist -o $1.nls -t $1.nlg 
 	fixes it adding the -t $1.nlg ?????  Possible conflicting use of log files?
@@ -20,3 +19,5 @@ On 2021-08-08 installed skanlite and brother HL2280DW drivers. Once installed, s
 Add installation of :
  vscode extension citation picker for zotero
  better bibtex extension for zotero
+
+consider tinytex rather than texlive

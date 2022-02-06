@@ -12,6 +12,7 @@ Read initial_hardware_setup.md and initial_software_setup.md in the docs subdire
 
 * ansible - subdirectory tree containing files needed for ansible based provisioning.
 * docs - subdirectory of documentation regarding this project, along with plans for the future, and documentation fo the provisioning and configuration process.
+* app-documetnation - subdirectory with info on each of the installed apps
 * scripts - subdirectory of bash scripts for initial provisioning of desktop before ansible can be employed.
 * todo.md - list of tasks to complete this project
 * README.md - this list
